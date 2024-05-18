@@ -7,9 +7,10 @@ interface IProps {
   title: string;
   levels: string[];
   image: string;
+  slug: string;
 }
 
-const TopicCard = ({ title, levels, image }: IProps) => {
+const TopicCard = ({ title, levels, image, slug }: IProps) => {
   return (
     <div className="flex flex-col gap-3 items-center justify-center bg-gray-700 p-4">
       <Image src={image} alt="AI Mock Interview" width={200} height={200} />
@@ -17,7 +18,7 @@ const TopicCard = ({ title, levels, image }: IProps) => {
       <div className="flex flex-col gap-2">
         {levels.map((level) => (
           <Link
-            href={`/${title}?level=${level.toLowerCase()}`}
+            href={`/${slug}?level=${level.toLowerCase()}`}
             key={level}
             className="text-sm font-semibold"
           >

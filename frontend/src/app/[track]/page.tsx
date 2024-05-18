@@ -1,6 +1,10 @@
 "use client";
 
-import Image from "next/image";
+import { use, useEffect, useState } from "react";
+import Answer from "@/components/Answer";
+import Question from "@/components/Question";
+import TopicHeader from "@/components/TopicHeader";
+import { useAppContext } from "@/context";
 import { useParams, useSearchParams } from "next/navigation";
 
 export default function Home() {
@@ -8,31 +12,36 @@ export default function Home() {
   const search = useSearchParams();
   const level = search.get("level");
 
+  // common states
+  const [loading, setLoading] = useState<boolean>(false);
+
+  const { dispatch } = useAppContext();
+
+  useEffect(() => {
+    setLoading(true);
+    dispatch({
+      type: "SET_INITIAL_LEVEL_AND_TOPIC",
+      payload: {
+        level: level,
+        topic: track,
+      },
+    });
+    setLoading(false);
+  }, [dispatch, level, track]);
+
+  if (loading) {
+    return (
+      <div className="flex justify-center items-center h-screen text-4xl font-bold text-blue-400">
+        Loading...
+      </div>
+    );
+  }
+
   return (
     <main className="p-8 flex flex-col justify-between h-full">
-      <div className="flex gap-4">
-        <Image
-          src="/images/tests/node.png"
-          alt="Logo"
-          width={200}
-          height={200}
-        />
-        <h1 className="text-3xl font-bold text-center">AI Mock Interview</h1>
-      </div>
-      <div>
-        <h1>Question:</h1>
-        <p>What is the difference between var, let, and const?</p>
-
-      </div>
-      <div className="flex gap-4">
-        <textarea className="w-5/6 text-black" />
-        <div className="flex flex-col items-start gap-2 w-1/6">
-          <button className="bg-blue-400 px-4 py-2 w-full">Start Record</button>
-          <button className="bg-blue-400 px-4 py-2 w-full">Stop Record</button>
-          <button className="bg-blue-400 px-4 py-2 w-full">Submit</button>
-          <button className="bg-blue-400 px-4 py-2 w-full">Clear</button>
-        </div>
-      </div>
+      <TopicHeader />
+      <Question />
+      <Answer />
     </main>
   );
 }

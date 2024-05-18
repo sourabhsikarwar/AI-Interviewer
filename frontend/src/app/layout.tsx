@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import Sidebar from "@/components/Sidebar";
+import AppProvider from "@/context";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -22,7 +23,9 @@ export default function RootLayout({
           <div className="w-3/12 bg-gray-800">
             <Sidebar />
           </div>
-          <div className="w-9/12 bg-gray-900">{children}</div>
+          <AppProvider>
+            <div className="w-9/12 bg-gray-900">{children}</div>
+          </AppProvider>
         </div>
       </body>
     </html>
