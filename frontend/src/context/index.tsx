@@ -29,6 +29,18 @@ const getTopicData = (topic: string) => {
   return topics.find((t) => t.slug === topic.toLowerCase())?.topicData;
 };
 
+const addAnswerToPrompt = (
+  prompt: string,
+  answer: string,
+  questionNumber: number,
+  topic: any,
+  level: string
+) => {
+  return `${prompt}\nQ${questionNumber + 1}: ${
+    topic?.[level]?.[questionNumber].question
+  }\nAnswer: ${answer}`;
+};
+
 const AppReducer = (state: AppState, action: any): AppState => {
   switch (action.type) {
     case "SET_INITIAL_LEVEL_AND_TOPIC": {
@@ -36,6 +48,24 @@ const AppReducer = (state: AppState, action: any): AppState => {
         ...state,
         currentLevel: action.payload.level,
         currentTopic: getTopicData(action.payload.topic),
+      };
+    }
+    case "SET_ANSWER_TO_RECORD": {
+      return {
+        ...state,
+        promptToRecord: addAnswerToPrompt(
+          state.promptToRecord,
+          action.payload,
+          state.questionNumber,
+          state.currentTopic,
+          state.currentLevel
+        ),
+      };
+    }
+    case "SET_NEXT_QUESTION_NUMBER": {
+      return {
+        ...state,
+        questionNumber: state.questionNumber + 1,
       };
     }
     default:
