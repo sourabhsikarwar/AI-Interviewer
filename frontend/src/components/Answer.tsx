@@ -30,7 +30,6 @@ const Answer = () => {
   };
 
   const handleSubmit = (answer: string) => {
-    console.log(state, "data")
     window.speechSynthesis.cancel();
     SpeechRecognition.stopListening();
     setEditAndNext(false);
@@ -69,8 +68,6 @@ const Answer = () => {
       </div>
     );
   }
-
-  console.log(state.promptToRecord)
 
   return editAndNext ? (
     <div className="flex gap-4">
