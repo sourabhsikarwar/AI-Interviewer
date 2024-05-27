@@ -38,7 +38,7 @@ const addAnswerToPrompt = (
 ) => {
   return `${prompt}Q${questionNumber + 1}: ${
     topic?.[level.toLowerCase()]?.[questionNumber].question
-  }\n\nAnswer ${questionNumber + 1}: ${answer ? answer : "Not answered"}\n`;
+  }\n\nAnswer ${questionNumber + 1}: ${answer ? answer : "Not answered"}\n\n`;
 };
 
 const AppReducer = (state: AppState, action: any): AppState => {

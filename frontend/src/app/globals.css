@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Tiro+Devanagari+Sanskrit:ital@0;1&display=swap");
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -24,6 +26,9 @@ body {
       rgb(var(--background-end-rgb))
     )
     rgb(var(--background-start-rgb));
+}
+.hindi {
+  font-family: "Tiro Devanagari Sanskrit", sans-serif;
 }
 
 @layer utilities {

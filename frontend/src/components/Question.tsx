@@ -1,25 +1,25 @@
 "use client";
 
 import { useAppContext } from "@/context";
-import { useRouter } from "next/router";
+import ReactMarkdown from "react-markdown";
 
 const Question = () => {
   const { state } = useAppContext();
 
   if (!state.currentTopic || !state.currentLevel) {
-    return null;
+    return null
   }
 
   return (
-    <div>
-      <div>Question {state.questionNumber + 1}</div>
-      <div>
+    <div className="text-gray-800 text-lg">
+      <div className="text-gray-800 font-semibold">Question {state.questionNumber + 1}</div>
+      <ReactMarkdown>
         {
           state.currentTopic?.[state.currentLevel.toLowerCase()]?.[
             state.questionNumber
           ].question
         }
-      </div>
+      </ReactMarkdown>
     </div>
   );
 };

@@ -1,6 +1,6 @@
 export const js_data = {
   title: "JavaScript",
-  logo: "",
+  logo: "/images/js.webp",
   relative_path: "javascript",
   beginner: [
     {
@@ -136,7 +136,7 @@ export const js_data = {
         "`undefined` means a variable has been declared but not assigned a value, while `null` is an assignment value that represents no value.",
     },
   ],
-  itermediate: [
+  intermediate: [
     {
       question:
         "What is the difference between `call`, `apply`, and `bind` methods in JavaScript?",
@@ -419,7 +419,7 @@ export const js_data = {
 
 export const cpp_data = {
   title: "JavaScript",
-  logo: "",
+  logo: "/images/cpp.png",
   relative_path: "javascript",
   beginner: [
     {
@@ -555,7 +555,7 @@ export const cpp_data = {
         "`undefined` means a variable has been declared but not assigned a value, while `null` is an assignment value that represents no value.",
     },
   ],
-  itermediate: [
+  intermediate: [
     {
       question:
         "What is the difference between `call`, `apply`, and `bind` methods in JavaScript?",
@@ -843,7 +843,7 @@ export const topics = [
     slug: "javascript",
     topicData: js_data,
     levels: ["Beginner", "Intermediate", "Advanced"],
-    image: "/images/tests/node.png",
+    image: "/images/js.webp",
   },
   {
     id: 2,
@@ -851,7 +851,30 @@ export const topics = [
     slug: "cpp",
     topicData: cpp_data,
     levels: ["Beginner", "Intermediate", "Advanced"],
-    image: "/images/tests/node.png",
-  }
+    image: "/images/cpp.png",
+  },
+  {
+    id: 3,
+    title: "Java",
+    slug: "java",
+    topicData: cpp_data,
+    levels: ["Beginner", "Intermediate", "Advanced"],
+    image: "/images/java.webp",
+  },
+  {
+    id: 4,
+    title: "Python",
+    slug: "python",
+    topicData: cpp_data,
+    levels: ["Beginner", "Intermediate", "Advanced"],
+    image: "/images/python.png",
+  },
+  {
+    id: 5,
+    title: "Golang",
+    slug: "golang",
+    topicData: cpp_data,
+    levels: ["Beginner", "Intermediate", "Advanced"],
+    image: "/images/go.png",
+  },
 ];
-

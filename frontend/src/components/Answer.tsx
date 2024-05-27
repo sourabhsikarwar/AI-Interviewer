@@ -10,7 +10,7 @@ import { useRouter } from "next/navigation";
 
 const Answer = () => {
   const { state, dispatch } = useAppContext();
-  const router = useRouter()
+  const router = useRouter();
   const {
     transcript,
     listening,
@@ -40,13 +40,12 @@ const Answer = () => {
     if (state.questionNumber === 8) {
       setButtonText("Submit");
     }
-    if(state.questionNumber === 9) {
-      router.push('/result')
-      return
+    if (state.questionNumber === 9) {
+      router.push("/result");
+      return;
     }
 
     dispatch({ type: "SET_NEXT_QUESTION_NUMBER" });
-
   };
 
   const handleEditAndSubmit = () => {
@@ -88,38 +87,36 @@ const Answer = () => {
       </div>
     </div>
   ) : (
-    <div className="flex gap-4">
-      <p className="w-5/6 bg-black p-4">{transcript}</p>
-      <div className="flex flex-col items-start gap-2 w-1/6">
-        <button
-          className="bg-blue-400 px-4 py-2 w-full"
-          onClick={() => handleStart()}
-        >
+    <div className="flex flex-col gap-4">
+      <div className="flex gap-4 self-end">
+        <button className="bg-red-500 hover:bg-red-600 px-4 py-2 rounded" onClick={() => handleStart()}>
           Start Record
         </button>
-        <button
-          className="bg-blue-400 px-4 py-2 w-full"
-          onClick={() => handleStop()}
-        >
+        <button className="bg-yellow-400 px-4 py-2 hover:bg-yellow-500 rounded" onClick={() => handleStop()}>
           Stop Record
         </button>
+      </div>
+      <p className="w-full min-h-56 bg-white shadow-lg rounded-lg p-4">
+        {transcript}
+      </p>
+      <div className="flex items-start gap-2">
         <button
-          className="bg-blue-400 px-4 py-2 w-full"
-          onClick={() => handleSubmit(transcript)}
+          className="bg-blue-300 hover:bg-blue-400 px-4 py-2 w-full rounded"
+          onClick={() => handleClear()}
         >
-          {buttonText}
+          Clear
         </button>
         <button
-          className="bg-blue-400 px-4 py-2 w-full"
+          className="bg-blue-400 hover:bg-blue-500 px-4 py-2 w-full rounded"
           onClick={handleEditAndSubmit}
         >
           Edit and {buttonText}
         </button>
         <button
-          className="bg-blue-400 px-4 py-2 w-full"
-          onClick={() => handleClear()}
+          className="bg-blue-500 hover:bg-blue-600 px-4 py-2 w-full rounded"
+          onClick={() => handleSubmit(transcript)}
         >
-          Clear
+          {buttonText}
         </button>
       </div>
     </div>
